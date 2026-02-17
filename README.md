@@ -1,166 +1,253 @@
 # 📧 Phishing Email Detection & Awareness Report  
 ## Cyber Security Internship – Future Interns (2026)
 
----
+---------------------------------------------------------------------
 
 ## 🎯 Objective
 
 This project simulates a corporate phishing investigation engagement.
 
 The goal was to:
-
 - Analyze phishing email samples
 - Identify technical and psychological attack indicators
 - Classify email risk (Safe / Phishing)
 - Provide clear awareness guidance for employees
 
-This task focuses on security awareness and risk communication.
+---------------------------------------------------------------------
 
----
+## 📊 Executive Summary
 
-# 📊 Executive Summary
+Total Emails Analyzed: 3
+- Phishing: 2
+- Legitimate: 1
 
-Three email samples were analyzed:
-
-| Category | Count |
-|----------|-------|
-| Phishing | 2 |
-| Legitimate | 1 |
-
-Primary phishing techniques identified:
-
+Primary attack techniques observed:
 - Domain spoofing (typosquatting)
 - Urgency-based manipulation
 - Fake verification links
 - Email authentication failures (SPF/DKIM/DMARC)
 
-Overall Observation:  
-Phishing attacks primarily exploit human psychology rather than technical vulnerabilities.
+Overall Observation:
+Phishing attacks exploit human psychology more than technical vulnerabilities.
 
----
+=====================================================================
 
-# 🔍 Email Case Analysis
+🔹 CASE 01 – PAYPAL VERIFICATION (PHISHING – HIGH RISK)
 
----
+---------------------------------------------------------------------
 
-## 🔹 Case 01 – PayPal Account Verification (Phishing – High Risk)
+📧 Phishing Email Sample
 
-**Sender:** support@paypa1.com  
-**Subject:** Urgent: Account Access Limited  
+Subject: 🚨 Urgent: Account Access Limited Until Verification
+From: support@paypa1.com
+To: rohithrachapudi@gmail.com
 
-### Indicators Identified:
+Dear Rachapudi Rohith,
 
-- Domain spoofing (“paypa1” instead of “paypal”)
-- Suspicious verification link
+We’ve detected unusual activity on your PayPal account.
+
+Please verify your details immediately:
+https://paypal.com-update@is.gd/kU2qKS
+
+Failure to complete within 24 hours may result in suspension.
+
+Regards,
+PayPal Account Security Team
+
+---------------------------------------------------------------------
+
+🧠 Red Flags in Email Body
+
+- Fake sender domain (paypa1.com instead of paypal.com)
+- URL shortener masking real destination
 - Urgency and fear-based messaging
-- SPF Fail / DKIM None / DMARC Fail
+- Brand impersonation
 
-### Risk Explanation:
+---------------------------------------------------------------------
 
-Attackers attempt to trick users into submitting credentials through fake verification portals.
+📨 Header Analysis (Simulated)
 
-### Final Classification:
-**Phishing (High Confidence)**
+Return-Path: <support@paypa1.com>
+Received-SPF: fail
+Authentication-Results:
+    spf=fail;
+    dkim=none;
+    dmarc=fail
 
----
+---------------------------------------------------------------------
 
-## 🔹 Case 02 – Microsoft Password Expiration (Phishing – High Risk)
+🚩 Header Red Flags
 
-**Sender:** security@micr0soft-support.com  
-**Subject:** Password Expiration Notice  
+- SPF authentication failed
+- No DKIM signature
+- DMARC validation failed
+- Sender domain not authorized
 
-### Indicators Identified:
+---------------------------------------------------------------------
 
-- “micr0soft” domain manipulation
+🛡 Final Classification: PHISHING (HIGH CONFIDENCE)
+
+=====================================================================
+
+🔹 CASE 02 – MICROSOFT PASSWORD EXPIRATION (PHISHING – HIGH RISK)
+
+---------------------------------------------------------------------
+
+📧 Phishing Email Sample
+
+Subject: ⚠️ Password Expiration Notice – Action Required
+From: security@micr0soft-support.com
+
+Dear User,
+
+Your Microsoft password will expire due to unusual sign-in attempts.
+
+Verify your account within 12 hours:
+https://micr0soft-login-security.com/verify
+
+Microsoft Security Team
+
+---------------------------------------------------------------------
+
+🧠 Red Flags in Email Body
+
+- Domain manipulation (micr0soft)
 - Fake login page link
-- 12-hour urgency pressure
-- Email authentication failures
+- Artificial urgency (12-hour deadline)
+- Generic greeting
 
-### Risk Explanation:
+---------------------------------------------------------------------
 
-The attacker aims to capture Microsoft account credentials using a cloned login page.
+📨 Header Analysis (Simulated)
 
-### Final Classification:
-**Phishing (High Confidence)**
+Return-Path: <security@micr0soft-support.com>
+Received-SPF: fail
+Authentication-Results:
+    spf=fail;
+    dkim=none;
+    dmarc=fail
 
----
+---------------------------------------------------------------------
 
-## 🔹 Case 03 – PayPal Monthly Statement (Legitimate – Safe)
+🚩 Header Red Flags
 
-**Sender:** no-reply@paypal.com  
-**Subject:** Monthly Account Statement  
+- Spoofed sender domain
+- SPF failed
+- DKIM missing
+- DMARC failed
 
-### Indicators Identified:
+---------------------------------------------------------------------
+
+🛡 Final Classification: PHISHING (HIGH CONFIDENCE)
+
+=====================================================================
+
+🔹 CASE 03 – PAYPAL MONTHLY STATEMENT (LEGITIMATE – SAFE)
+
+---------------------------------------------------------------------
+
+📧 Legitimate Email Sample
+
+Subject: Your Monthly Account Statement – February 2026
+From: no-reply@paypal.com
+
+Dear Rohith Rachapudi,
+
+Your monthly PayPal statement is now available.
+
+Access your account securely:
+https://www.paypal.com/
+
+Thank you for using PayPal.
+
+---------------------------------------------------------------------
+
+🧠 Indicators Observed
 
 - Correct official domain
 - HTTPS official link
 - Personalized greeting
-- SPF/DKIM/DMARC Pass
+- Professional tone
 
-### Final Classification:
-**Legitimate (Safe)**
+---------------------------------------------------------------------
 
----
+📨 Header Analysis (Simulated)
 
-# 🛡 Common Phishing Indicators
+Received-SPF: pass
+dkim=pass
+dmarc=pass
 
-Across analyzed emails, common red flags included:
+---------------------------------------------------------------------
+
+🚩 Header Review
+
+- SPF authentication passed
+- DKIM signature valid
+- DMARC validation successful
+
+---------------------------------------------------------------------
+
+🛡 Final Classification: LEGITIMATE (SAFE)
+
+=====================================================================
+
+## 🛡 Common Phishing Indicators Identified
 
 - Slight domain variations (1 instead of l, 0 instead of o)
-- Threat of suspension or account lock
-- Immediate action requests
+- Threat of suspension or lock
 - Short verification deadlines
 - Suspicious login URLs
 - Authentication failures
 
----
+---------------------------------------------------------------------
 
-# 🏢 Business Impact
+## 🏢 Business Impact
 
-Successful phishing attacks may result in:
-
+If users fall victim:
 - Credential theft
-- Financial fraud
 - Account takeover
+- Financial fraud
 - Data leakage
 - Reputational damage
-- Compliance violations
 
-Human error remains the primary attack vector.
+Phishing targets human trust and urgency.
 
----
+---------------------------------------------------------------------
 
-# 📘 Employee Awareness Guidelines
+## 📘 Employee Awareness Guidelines
 
-## ✅ Do:
-
+DO:
 - Verify sender domain carefully
 - Hover over links before clicking
-- Access accounts directly through official websites
-- Report suspicious emails to IT/Security
+- Access accounts directly via official websites
+- Report suspicious emails
 
-## ❌ Do Not:
-
+DO NOT:
 - Click urgent verification links
-- Share passwords or OTP codes
-- Download unknown attachments
+- Share passwords or OTPs
+- Trust emails creating panic
 - Ignore authentication warnings
 
----
+---------------------------------------------------------------------
 
-# 🛠 Tools Used
+## 🛠 Tools Used
 
-- Public phishing email examples (educational datasets)
+- Public phishing email samples (educational datasets)
 - Google Message Header Analyzer
 - MXToolbox Email Header Analyzer
 - Manual domain inspection
-- Browser security checks
+- Browser analysis tools
 
----
+---------------------------------------------------------------------
 
-# ⚖ Ethical Note
+## ⚖ Ethical Note
 
-All email samples were analyzed in a controlled environment for internship purposes.
-
+All email samples were analyzed in a controlled environment.
 No malicious links were accessed.
 No exploitation was performed.
+
+=====================================================================
+
+Final Assessment:
+Phishing remains one of the most effective social engineering threats.
+User awareness combined with proper SPF/DKIM/DMARC implementation is critical for mitigation.
